@@ -9,7 +9,7 @@ import random
 import string
 import pandas as pd
 
-def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,noise_file_location):
+def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_location,transformation_location,noise_file_location):
 
     random = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)])
     youtube_file_name="banking"+random+".wav"
@@ -21,12 +21,12 @@ def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,noise_fi
     youtube_audio.download_audio(youtube_link,youtube_dir,youtube_file_name)
 
 
-    split_file_location = youtube_dir + "split_files/"
+    split_file_location = split_location
     split_audio_final.silence_second_bw_8_12_secs_chunks(youtube_dir+youtube_file_name,split_file_location)
     speech_text_dict=speech_text_final.convert_to_speech(split_file_location) #some changed have to be made to transcribe only the files for a particular youtube video  
 
     ##enhancements in audio
-    audio_enhancements_location = split_file_location+"audio_enhanced_files/"
+    audio_enhancements_location = transformation_location
     noise_file = noise_file_location#"/media/edl-90/WD Elements/Vibhav/Office work/practice/diff files/second/noise_1.wav"
     #changes to be made to include the audio files for that particular audio files only
     basepath = split_file_location
@@ -80,7 +80,7 @@ def publish_to_csv(location,speech_dict):
     
     new_dataframe.to_csv(location)
 
-publish_to_csv("/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/transcribed_text.csv",file_text_dict)
+#publish_to_csv("/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/transcribed_text.csv",file_text_dict)
 
 
 
