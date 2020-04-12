@@ -9,59 +9,62 @@ import random
 import string
 import pandas as pd
 
-random = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)])
-youtube_file_name="banking"+random+".wav"
-# youtube_file_name="bankingbZytQ.wav"
-youtube_dir="/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/"
-youtube_link="https://www.youtube.com/watch?v=Pz9XEoZL9NY"
+def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,noise_file_location):
+
+    random = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)])
+    youtube_file_name="banking"+random+".wav"
+    # youtube_file_name="bankingbZytQ.wav"
+    youtube_dir=download_location
+    youtube_link = youtube_link
 
 
-youtube_audio.download_audio(youtube_link,youtube_dir,youtube_file_name)
+    youtube_audio.download_audio(youtube_link,youtube_dir,youtube_file_name)
 
 
-split_file_location = youtube_dir + "split_files/"
-split_audio_final.silence_second_bw_8_12_secs_chunks(youtube_dir+youtube_file_name,split_file_location)
-speech_text_dict=speech_text_final.convert_to_speech(split_file_location) #some changed have to be made to transcribe only the files for a particular youtube video  
+    split_file_location = youtube_dir + "split_files/"
+    split_audio_final.silence_second_bw_8_12_secs_chunks(youtube_dir+youtube_file_name,split_file_location)
+    speech_text_dict=speech_text_final.convert_to_speech(split_file_location) #some changed have to be made to transcribe only the files for a particular youtube video  
 
-##enhancements in audio
-audio_enhancements_location=split_file_location+"audio_enhanced_files"+"/"
-noise_file="/media/edl-90/WD Elements/Vibhav/Office work/practice/diff files/second/noise_1.wav"
-#changes to be made to include the audio files for that particular audio files only
-basepath = split_file_location
-for entry in os.listdir(basepath):
-    a=os.path.join(basepath, entry)
-    if os.path.isfile(a):
-        print(entry)
+    ##enhancements in audio
+    audio_enhancements_location = split_file_location+"audio_enhanced_files/"
+    noise_file = noise_file_location#"/media/edl-90/WD Elements/Vibhav/Office work/practice/diff files/second/noise_1.wav"
+    #changes to be made to include the audio files for that particular audio files only
+    basepath = split_file_location
+    for entry in os.listdir(basepath):
+        a=os.path.join(basepath, entry)
+        if os.path.isfile(a):
+            print(entry)
 
-        audio_enhancements.final_function(a,noise_file,audio_enhancements_location)
+            audio_enhancements.final_function(a,noise_file,audio_enhancements_location)
 
 
 
-##matching the enhanced files with their text
-file_text_dict={}
-basepath="/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/split_files/audio_enhanced_files/"
+    ##matching the enhanced files with their text
+    file_text_dict={}
+    basepath=audio_enhancements_location#"/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/split_files/audio_enhanced_files/"
 
-for a in os.listdir(basepath):
-    try:
-        start_index=0
-        for count,input_char in enumerate(a):
-            if((int(ord(input_char)) >= 65 and int(ord(input_char)) <= 90) or (int(ord(input_char)) >= 97 and int(ord(input_char)) <= 122)):
-                start_index = count
-                break
-        common_name=a[start_index:]
+    for a in os.listdir(basepath):
+        try:
+            start_index=0
+            for count,input_char in enumerate(a):
+                if((int(ord(input_char)) >= 65 and int(ord(input_char)) <= 90) or (int(ord(input_char)) >= 97 and int(ord(input_char)) <= 122)):
+                    start_index = count
+                    break
+            common_name=a[start_index:]
 
-        # dict_b[common_name][]
+            # dict_b[common_name][]
 
-        matching_file_path=basepath+a    
-        text=speech_text_dict[common_name][0]
+            matching_file_path=basepath+a    
+            text=speech_text_dict[common_name][0]
 
-        size  = os.path.getsize(matching_file_path)
-        list1=[size,text]
-        file_text_dict[matching_file_path]=list1
-        
-        
-    except Exception as e:
-        print(e)
+            size  = os.path.getsize(matching_file_path)
+            list1=[size,text]
+            file_text_dict[matching_file_path]=list1
+            
+            
+        except Exception as e:
+            print(e)
+    return file_text_dict
 
 print(1)
 print(file_text_dict)
