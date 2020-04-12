@@ -66,9 +66,9 @@ def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_lo
             print(e)
     return youtube_file_name,file_text_dict
 
-print(1)
-print(file_text_dict)
-print(2)
+# print(1)
+# print(file_text_dict)
+# print(2)
 def publish_to_csv(location,speech_dict,file_name):
     new_dataframe = pd.DataFrame()
     for a,b in speech_dict.items():
