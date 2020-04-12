@@ -10,8 +10,7 @@ import string
 import pandas as pd
 
 def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_location,transformation_location,noise_file_location):
-    import random
-    import string
+    
     print(youtube_link,download_location,split_location,transformation_location,noise_file_location)
     print(''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)]))
     
@@ -92,3 +91,4 @@ def publish_to_csv(location,speech_dict,file_name):
 #youtube downloaded name=file name + random 5 characters
 #split file = ^+ c+(number of split)
 #enhanced audio = numericals according to changes + ^
+ytd_audio_splitting_enhacing_mapping("https://www.youtube.com/watch?v=FIEiReyph4M","/media/edl-90/WD Elements/Vibhav/Office work/practice/audio","/media/edl-90/WD Elements/Vibhav/Office work/practice/audio","/media/edl-90/WD Elements/Vibhav/Office work/practice/audio","/media/edl-90/WD Elements/Vibhav/Office work/practice/audio")
