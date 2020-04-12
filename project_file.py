@@ -14,8 +14,9 @@ def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_lo
     print(youtube_link,download_location,split_location,transformation_location,noise_file_location)
     print(''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)]))
     
-    characs = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)])
+    # characs = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)])
     print(characs)
+    characs=AbCdE
     youtube_file_name="banking"+characs+".wav"
     # youtube_file_name="bankingbZytQ.wav"
     youtube_dir=download_location
