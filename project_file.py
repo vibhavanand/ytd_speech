@@ -64,12 +64,12 @@ def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_lo
             
         except Exception as e:
             print(e)
-    return file_text_dict
+    return youtube_file_name,file_text_dict
 
 print(1)
 print(file_text_dict)
 print(2)
-def publish_to_csv(location,speech_dict):
+def publish_to_csv(location,speech_dict,file_name):
     new_dataframe = pd.DataFrame()
     for a,b in speech_dict.items():
         print(a,b)
@@ -78,7 +78,7 @@ def publish_to_csv(location,speech_dict):
     new_dataframe = new_dataframe[['wav_filename', 'wav_filesize', 'transcript']]
     new_dataframe=new_dataframe.set_index('wav_filename')
     
-    new_dataframe.to_csv(location)
+    new_dataframe.to_csv(location+file_name+".csv")
 
 #publish_to_csv("/media/edl-90/WD Elements/Vibhav/Office work/practice/audio/youtube_downloaded/transcribed_text.csv",file_text_dict)
 
