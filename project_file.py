@@ -11,8 +11,8 @@ import pandas as pd
 
 def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_location,transformation_location,noise_file_location):
 
-    random = ''.join([rd.choice(string.ascii_letters + string.digits) for n in range(5)])
-    youtube_file_name="banking"+random+".wav"
+    characs = ''.join([rd.choice(string.ascii_letters + string.digits) for n in range(5)])
+    youtube_file_name="banking"+characs+".wav"
     # youtube_file_name="bankingbZytQ.wav"
     youtube_dir=download_location
     youtube_link = youtube_link
