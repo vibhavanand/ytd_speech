@@ -10,6 +10,8 @@ import string
 import pandas as pd
 
 def ytd_audio_splitting_enhacing_mapping(youtube_link,download_location,split_location,transformation_location,noise_file_location):
+    import random
+    import string
     print(youtube_link,download_location,split_location,transformation_location,noise_file_location)
     print(''.join([random.choice(string.ascii_letters + string.digits) for n in range(5)]))
     
