@@ -7,7 +7,7 @@ def abc():
 
 abc()
 
-def string():
+def string1():
     return "aaa"
 
-print(string())
+print(string1())
